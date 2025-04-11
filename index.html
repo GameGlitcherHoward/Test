@@ -1,175 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Defend the Base</title>
-  <style>
-    canvas {
-      display: block;
-      margin: 0 auto;
-      background: black;
+<script>
+  // Canvas setup
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Game variables
+  let player = { x: canvas.width / 2, y: canvas.height - 50, width: 50, height: 20, color: "cyan", speed: 10 };
+  let base = { x: canvas.width / 2 - 50, y: canvas.height - 100, width: 100, height: 50, color: "gray", health: 5000 };
+  let bullets = [];
+  let monsters = [];
+  let helpers = [];
+  let wave = 1;
+  let score = 0;
+  let weaponLevel = 1;
+
+  // Helper AI
+  function createHelper(x, y) {
+    helpers.push({ x, y, width: 30, height: 30, color: "blue", target: null });
+  }
+
+  // Calculate distance between two points
+  function calculateDistance(x1, y1, x2, y2) {
+    return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+  }
+
+  // Monster creation
+  function spawnMonsters(count) {
+    for (let i = 0; i < count; i++) {
+      monsters.push({
+        x: Math.random() * (canvas.width - 50),
+        y: Math.random() * canvas.height / 2,
+        width: 40,
+        height: 40,
+        color: "red",
+        speed: Math.random() * 2 + 1
+      });
     }
-    body {
-      color: white;
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
-  </style>
-</head>
-<body>
-  <h1>Defend the Base</h1>
-  <p>Defend your base from waves of monsters! Use arrow keys to move and click to shoot.</p>
-  <canvas id="gameCanvas" width="800" height="600"></canvas>
+  }
 
-  <script>
-    // Canvas setup
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
+  // Bullet creation
+  function shootBullet(x, y) {
+    bullets.push({ x, y, width: 5, height: 10, speed: 5 });
+  }
 
-    // Game variables
-    let player = { x: canvas.width / 2, y: canvas.height - 50, width: 50, height: 20, color: "cyan", speed: 10 };
-    let base = { x: canvas.width / 2 - 50, y: canvas.height - 100, width: 100, height: 50, color: "gray", health: 5000 };
-    let bullets = [];
-    let monsters = [];
-    let helpers = [];
-    let wave = 1;
-    let score = 0;
-    let weaponLevel = 1;
+  // Collision detection
+  function isColliding(a, b) {
+    return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+  }
 
-    // Helper AI
-    function createHelper(x, y) {
-      helpers.push({ x, y, width: 30, height: 30, color: "blue", target: null });
-    }
+  // Game loop
+  function updateGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Monster creation
-    function spawnMonsters(count) {
-      for (let i = 0; i < count; i++) {
-        monsters.push({
-          x: Math.random() * (canvas.width - 50),
-          y: Math.random() * canvas.height / 2,
-          width: 40,
-          height: 40,
-          color: "red",
-          speed: Math.random() * 2 + 1
-        });
+    // Move player
+    if (keys["ArrowLeft"] && player.x > 0) player.x -= player.speed;
+    if (keys["ArrowRight"] && player.x + player.width < canvas.width) player.x += player.speed;
+
+    // Draw player
+    ctx.fillStyle = player.color;
+    ctx.fillRect(player.x, player.y, player.width, player.height);
+
+    // Draw base
+    ctx.fillStyle = base.color;
+    ctx.fillRect(base.x, base.y, base.width, base.height);
+    ctx.fillStyle = "white";
+    ctx.fillText(`Base Health: ${base.health}`, base.x + 10, base.y - 10);
+
+    // Move and draw bullets
+    bullets = bullets.filter(bullet => bullet.y > 0);
+    bullets.forEach(bullet => {
+      bullet.y -= bullet.speed;
+      ctx.fillStyle = "yellow";
+      ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+    });
+
+    // Move and draw monsters
+    monsters.forEach(monster => {
+      if (monster.y + monster.height < base.y) {
+        monster.y += monster.speed;
       }
-    }
+      ctx.fillStyle = monster.color;
+      ctx.fillRect(monster.x, monster.y, monster.width, monster.height);
+    });
 
-    // Bullet creation
-    function shootBullet(x, y) {
-      bullets.push({ x, y, width: 5, height: 10, speed: 5 });
-    }
-
-    // Collision detection
-    function isColliding(a, b) {
-      return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
-    }
-
-    // Game loop
-    function updateGame() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Move player
-      if (keys["ArrowLeft"] && player.x > 0) player.x -= player.speed;
-      if (keys["ArrowRight"] && player.x + player.width < canvas.width) player.x += player.speed;
-
-      // Draw player
-      ctx.fillStyle = player.color;
-      ctx.fillRect(player.x, player.y, player.width, player.height);
-
-      // Draw base
-      ctx.fillStyle = base.color;
-      ctx.fillRect(base.x, base.y, base.width, base.height);
-      ctx.fillStyle = "white";
-      ctx.fillText(`Base Health: ${base.health}`, base.x + 10, base.y - 10);
-
-      // Move and draw bullets
-      bullets = bullets.filter(bullet => bullet.y > 0);
-      bullets.forEach(bullet => {
-        bullet.y -= bullet.speed;
-        ctx.fillStyle = "yellow";
-        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-      });
-
-      // Move and draw monsters
-      monsters.forEach(monster => {
-        if (monster.y + monster.height < base.y) {
-          monster.y += monster.speed;
-        }
-        ctx.fillStyle = monster.color;
-        ctx.fillRect(monster.x, monster.y, monster.width, monster.height);
-      });
-
-      // Check for collisions
-      bullets.forEach((bullet, bIndex) => {
-        monsters.forEach((monster, mIndex) => {
-          if (isColliding(bullet, monster)) {
-            // Remove bullet and monster
-            bullets.splice(bIndex, 1);
-            monsters.splice(mIndex, 1);
-            score += 10;
-            // Explosion effect (simple)
-            ctx.fillStyle = "orange";
-            ctx.beginPath();
-            ctx.arc(monster.x + monster.width / 2, monster.y + monster.height / 2, 30, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        });
-      });
-
-      // Check for monsters reaching the base
+    // Check for collisions
+    bullets.forEach((bullet, bIndex) => {
       monsters.forEach((monster, mIndex) => {
-        if (isColliding(monster, base)) {
-          base.health -= 10;
+        if (isColliding(bullet, monster)) {
+          // Remove bullet and monster
+          bullets.splice(bIndex, 1);
           monsters.splice(mIndex, 1);
-          if (base.health <= 0) {
-            alert("Game Over! The base has been destroyed.");
-            document.location.reload();
+          score += 10;
+          // Explosion effect (simple)
+          ctx.fillStyle = "orange";
+          ctx.beginPath();
+          ctx.arc(monster.x + monster.width / 2, monster.y + monster.height / 2, 30, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+    });
+
+    // Check for monsters reaching the base
+    monsters.forEach((monster, mIndex) => {
+      if (isColliding(monster, base)) {
+        base.health -= 10;
+        monsters.splice(mIndex, 1);
+        if (base.health <= 0) {
+          alert("Game Over! The base has been destroyed.");
+          document.location.reload();
+        }
+      }
+    });
+
+    // Draw helpers
+    helpers.forEach(helper => {
+      ctx.fillStyle = helper.color;
+      ctx.fillRect(helper.x, helper.y, helper.width, helper.height);
+
+      if (monsters.length > 0) {
+        // Find the nearest monster
+        let nearestMonster = null;
+        let shortestDistance = Infinity;
+        monsters.forEach(monster => {
+          let distance = calculateDistance(helper.x, helper.y, monster.x, monster.y);
+          if (distance < shortestDistance) {
+            shortestDistance = distance;
+            nearestMonster = monster;
+          }
+        });
+
+        // Move towards the nearest monster
+        if (nearestMonster) {
+          if (nearestMonster.x > helper.x) helper.x += 1;
+          if (nearestMonster.x < helper.x) helper.x -= 1;
+          if (Math.random() < 0.02) {
+            // AI shooting
+            shootBullet(helper.x + helper.width / 2, helper.y);
           }
         }
-      });
-
-      // Draw helpers
-      helpers.forEach(helper => {
-        ctx.fillStyle = helper.color;
-        ctx.fillRect(helper.x, helper.y, helper.width, helper.height);
-
-        // Helper AI targeting
-        let target = monsters[0];
-        if (target) {
-          if (target.x > helper.x) helper.x += 1;
-          if (target.x < helper.x) helper.x -= 1;
-          if (Math.random() < 0.02) shootBullet(helper.x + helper.width / 2, helper.y); // AI shooting
-        }
-      });
-
-      // Check for wave completion
-      if (monsters.length === 0) {
-        wave++;
-        spawnMonsters(wave * 5);
-        if (wave % 3 === 0) createHelper(Math.random() * canvas.width, canvas.height - 100);
-        weaponLevel++;
       }
+    });
 
-      // Draw score and wave
-      ctx.fillStyle = "white";
-      ctx.fillText(`Wave: ${wave}`, 10, 20);
-      ctx.fillText(`Score: ${score}`, 10, 40);
-      ctx.fillText(`Weapon Level: ${weaponLevel}`, 10, 60);
-
-      requestAnimationFrame(updateGame);
+    // Check for wave completion
+    if (monsters.length === 0) {
+      wave++;
+      spawnMonsters(wave * 5);
+      if (wave % 3 === 0) createHelper(Math.random() * canvas.width, canvas.height - 100);
+      weaponLevel++;
     }
 
-    // Controls
-    const keys = {};
-    document.addEventListener("keydown", e => (keys[e.key] = true));
-    document.addEventListener("keyup", e => (keys[e.key] = false));
-    canvas.addEventListener("click", () => shootBullet(player.x + player.width / 2 - 2.5, player.y));
+    // Draw score and wave
+    ctx.fillStyle = "white";
+    ctx.fillText(`Wave: ${wave}`, 10, 20);
+    ctx.fillText(`Score: ${score}`, 10, 40);
+    ctx.fillText(`Weapon Level: ${weaponLevel}`, 10, 60);
 
-    // Start the game
-    spawnMonsters(wave * 5);
-    updateGame();
-  </script>
-</body>
-</html>
+    requestAnimationFrame(updateGame);
+  }
+
+  // Controls
+  const keys = {};
+  document.addEventListener("keydown", e => (keys[e.key] = true));
+  document.addEventListener("keyup", e => (keys[e.key] = false));
+  canvas.addEventListener("click", () => shootBullet(player.x + player.width / 2 - 2.5, player.y));
+
+  // Start the game
+  spawnMonsters(wave * 5);
+  updateGame();
+</script>
