@@ -1,207 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base Defense Game</title>
-    <style>
-        canvas {
-            display: block;
-            margin: 0 auto;
-            background: black;
-        }
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-    </style>
-</head>
-<body>
-    <canvas id="gameCanvas"></canvas>
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-        class Base {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.radius = 50;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'blue';
-                ctx.fill();
-                ctx.closePath();
-            }
+    class Base {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.radius = 50;
+            this.health = 5000; // Initialize health
         }
 
-        class Monster {
-            constructor(x, y, speed) {
-                this.x = x;
-                this.y = y;
-                this.speed = speed;
-                this.radius = 20;
-            }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+            ctx.closePath();
 
-            update(targetX, targetY) {
-                const dx = targetX - this.x;
-                const dy = targetY - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
+            // Display health
+            ctx.fillStyle = 'white';
+            ctx.font = '20px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(`Health: ${this.health}`, this.x, this.y - this.radius - 10);
+        }
+    }
 
-                this.x += (dx / dist) * this.speed;
-                this.y += (dy / dist) * this.speed;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'red';
-                ctx.fill();
-                ctx.closePath();
-            }
+    class Monster {
+        constructor(x, y, speed) {
+            this.x = x;
+            this.y = y;
+            this.speed = speed;
+            this.radius = 20;
         }
 
-        class Laser {
-            constructor(x, y, targetX, targetY, color) {
-                this.x = x;
-                this.y = y;
-                this.targetX = targetX;
-                this.targetY = targetY;
-                this.color = color;
-                this.speed = 10;
-            }
+        update(targetX, targetY) {
+            const dx = targetX - this.x;
+            const dy = targetY - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
 
-            update() {
-                const dx = this.targetX - this.x;
-                const dy = this.targetY - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                this.x += (dx / dist) * this.speed;
-                this.y += (dy / dist) * this.speed;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 5, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-                ctx.closePath();
-            }
+            this.x += (dx / dist) * this.speed;
+            this.y += (dy / dist) * this.speed;
         }
 
-        class AIHelper {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.target = null;
-            }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
 
-            setTarget(monsters) {
-                if (monsters.length > 0) {
-                    this.target = monsters[0];
-                }
-            }
+    const base = new Base(canvas.width / 2, canvas.height / 2);
+    const monsters = [];
+    const lasers = [];
+    const aiHelpers = [];
+    let wave = 1;
+    let weaponColor = 'white';
+    let lastAIHelperTime = 0;
 
-            shoot(lasers) {
-                if (this.target) {
-                    lasers.push(new Laser(this.x, this.y, this.target.x, this.target.y, 'yellow'));
-                }
-            }
+    function spawnMonster() {
+        const angle = Math.random() * Math.PI * 2;
+        const x = base.x + Math.cos(angle) * (canvas.width / 2);
+        const y = base.y + Math.sin(angle) * (canvas.height / 2);
+        monsters.push(new Monster(x, y, 1 + wave * 0.2));
+    }
 
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 10, 0, Math.PI * 2);
-                ctx.fillStyle = 'green';
-                ctx.fill();
-                ctx.closePath();
-            }
+    function upgradeWeapon() {
+        wave++;
+        if (wave % 5 === 0) {
+            weaponColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }
+    }
+
+    function gameLoop(timestamp) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        base.draw();
+
+        // Spawn a monster every 3 seconds
+        if (timestamp / 1000 > monsters.length / 3) {
+            spawnMonster();
         }
 
-        const base = new Base(canvas.width / 2, canvas.height / 2);
-        const monsters = [];
-        const lasers = [];
-        const aiHelpers = [];
-        let wave = 1;
-        let weaponColor = 'white';
-        let lastAIHelperTime = 0;
+        // Update and draw monsters
+        monsters.forEach((monster, index) => {
+            monster.update(base.x, base.y);
+            monster.draw();
 
-        function spawnMonster() {
-            const angle = Math.random() * Math.PI * 2;
-            const x = base.x + Math.cos(angle) * (canvas.width / 2);
-            const y = base.y + Math.sin(angle) * (canvas.height / 2);
-            monsters.push(new Monster(x, y, 1 + wave * 0.2));
-        }
+            // Check collision with the base
+            const dx = monster.x - base.x;
+            const dy = monster.y - base.y;
+            if (Math.sqrt(dx * dx + dy * dy) < monster.radius + base.radius) {
+                base.health -= 100; // Reduce health upon collision
+                monsters.splice(index, 1); // Remove the monster
 
-        function upgradeWeapon() {
-            wave++;
-            if (wave % 5 === 0) {
-                weaponColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            }
-        }
-
-        function gameLoop(timestamp) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            base.draw();
-
-            // Spawn a monster every 3 seconds
-            if (timestamp / 1000 > monsters.length / 3) {
-                spawnMonster();
-            }
-
-            // Spawn an AI helper every second
-            if (timestamp - lastAIHelperTime > 1000) {
-                aiHelpers.push(new AIHelper(base.x, base.y));
-                lastAIHelperTime = timestamp;
-            }
-
-            // Update and draw monsters
-            monsters.forEach((monster, index) => {
-                monster.update(base.x, base.y);
-                monster.draw();
-
-                // Check collision with the base
-                const dx = monster.x - base.x;
-                const dy = monster.y - base.y;
-                if (Math.sqrt(dx * dx + dy * dy) < monster.radius + base.radius) {
+                if (base.health <= 0) {
                     alert('Game Over');
                     window.location.reload();
                 }
+            }
+        });
+
+        // Update and draw lasers
+        lasers.forEach((laser, index) => {
+            laser.update();
+            laser.draw();
+
+            // Remove laser if it hits a monster
+            monsters.forEach((monster, monsterIndex) => {
+                const dx = laser.x - monster.x;
+                const dy = laser.y - monster.y;
+                if (Math.sqrt(dx * dx + dy * dy) < monster.radius) {
+                    monsters.splice(monsterIndex, 1);
+                    lasers.splice(index, 1);
+                    upgradeWeapon();
+                }
             });
+        });
 
-            // Update and draw lasers
-            lasers.forEach((laser, index) => {
-                laser.update();
-                laser.draw();
-
-                // Remove laser if it hits a monster
-                monsters.forEach((monster, monsterIndex) => {
-                    const dx = laser.x - monster.x;
-                    const dy = laser.y - monster.y;
-                    if (Math.sqrt(dx * dx + dy * dy) < monster.radius) {
-                        monsters.splice(monsterIndex, 1);
-                        lasers.splice(index, 1);
-                        upgradeWeapon();
-                    }
-                });
-            });
-
-            // Update and draw AI helpers
-            aiHelpers.forEach((aiHelper) => {
-                aiHelper.setTarget(monsters);
-                aiHelper.shoot(lasers);
-                aiHelper.draw();
-            });
-
-            requestAnimationFrame(gameLoop);
-        }
+        // Update and draw AI helpers
+        aiHelpers.forEach((aiHelper) => {
+            aiHelper.setTarget(monsters);
+            aiHelper.shoot(lasers);
+            aiHelper.draw();
+        });
 
         requestAnimationFrame(gameLoop);
-    </script>
-</body>
-</html>
+    }
+
+    requestAnimationFrame(gameLoop);
+</script>
