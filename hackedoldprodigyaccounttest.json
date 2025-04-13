@@ -263,8 +263,8 @@
   "kennel": [
     {
       "ID": 145,
-      "stars": 30,
-      "level": 3,
+      "stars": 99999,
+      "level": 999,
       "levelCaught": 1,
       "nickname": null,
       "catchDate": 1733263085646,
@@ -272,8 +272,8 @@
     },
     {
       "ID": 125,
-      "stars": 547,
-      "level": 20,
+      "stars": 99999,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296367,
@@ -281,8 +281,8 @@
     },
     {
       "ID": 126,
-      "stars": 532,
-      "level": 20,
+      "stars": 99999,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296368,
@@ -290,8 +290,8 @@
     },
     {
       "ID": 127,
-      "stars": 532,
-      "level": 20,
+      "stars": 99999,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296368,
@@ -299,8 +299,8 @@
     },
     {
       "ID": 128,
-      "stars": 532,
-      "level": 20,
+      "stars": 99999,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296368,
@@ -308,7 +308,7 @@
     },
     {
       "ID": 129,
-      "stars": 532,
+      "stars": 99999,
       "level": 999,
       "levelCaught": 20,
       "nickname": null,
@@ -317,7 +317,7 @@
     },
     {
       "ID": 130,
-      "stars": 883,
+      "stars": 99999,
       "level": 999,
       "levelCaught": 20,
       "nickname": null,
@@ -327,7 +327,7 @@
     },
     {
       "ID": 131,
-      "stars": 532,
+      "stars": 99999,
       "level": 999,
       "levelCaught": 20,
       "nickname": null,
@@ -336,7 +336,7 @@
     },
     {
       "ID": 132,
-      "stars": 532,
+      "stars": 99999,
       "level": 999,
       "levelCaught": 20,
       "nickname": null,
@@ -345,7 +345,7 @@
     },
     {
       "ID": 133,
-      "stars": 787,
+      "stars": 99999,
       "level": 999,
       "levelCaught": 20,
       "nickname": null,
@@ -355,7 +355,7 @@
     },
     {
       "ID": 81,
-      "stars": 51,
+      "stars": 99999,
       "level": 999,
       "levelCaught": 4,
       "nickname": null,
@@ -364,7 +364,7 @@
     },
     {
       "ID": 52,
-      "stars": 119,
+      "stars": 99999,
       "level": 999,
       "levelCaught": 7,
       "nickname": null,
