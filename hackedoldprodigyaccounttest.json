@@ -10,7 +10,7 @@
       "29": 3
     },
     "qC": 55,
-    "kills": 26,
+    "kills": 99999,
     "gE": 4070
   },
   "appearance": {
@@ -131,8 +131,8 @@
     "storedMemberStars": 0,
     "memberStarsExpirationDate": 1733731199000,
     "stars": 330,
-    "level": 14,
-    "gold": 4070,
+    "level": 999999,
+    "gold": 999999999999,
     "battleCounter": 25,
     "spellbook": [31, 32, 33],
     "membershipVideoTimeStamp": 1733334473210,
@@ -309,7 +309,7 @@
     {
       "ID": 129,
       "stars": 532,
-      "level": 20,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296368,
@@ -318,7 +318,7 @@
     {
       "ID": 130,
       "stars": 883,
-      "level": 27,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296368,
@@ -328,7 +328,7 @@
     {
       "ID": 131,
       "stars": 532,
-      "level": 20,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296368,
@@ -337,7 +337,7 @@
     {
       "ID": 132,
       "stars": 532,
-      "level": 20,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296368,
@@ -346,7 +346,7 @@
     {
       "ID": 133,
       "stars": 787,
-      "level": 25,
+      "level": 999,
       "levelCaught": 20,
       "nickname": null,
       "catchDate": 1733263296368,
@@ -356,7 +356,7 @@
     {
       "ID": 81,
       "stars": 51,
-      "level": 4,
+      "level": 999,
       "levelCaught": 4,
       "nickname": null,
       "catchDate": 1733334625836,
@@ -365,7 +365,7 @@
     {
       "ID": 52,
       "stars": 119,
-      "level": 7,
+      "level": 999,
       "levelCaught": 7,
       "nickname": null,
       "catchDate": 1733337494059,
