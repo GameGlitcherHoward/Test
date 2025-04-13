@@ -1,0 +1,698 @@
+{
+  "achievements": {
+    "progress": {
+      "1": 1,
+      "2": 1,
+      "8": 1,
+      "9": 1,
+      "11": 1,
+      "28": 1,
+      "29": 3
+    },
+    "qC": 55,
+    "kills": 26,
+    "gE": 4070
+  },
+  "appearance": {
+    "name": {
+      "first": 157,
+      "middle": 802,
+      "last": 857,
+      "nick": null
+    },
+    "gender": "male",
+    "hair": {
+      "color": 5,
+      "style": 20
+    },
+    "skinColor": 3,
+    "eyeColor": 2,
+    "face": 4
+  },
+  "backpack": {
+    "hat": [],
+    "boots": [],
+    "weapon": [
+      {
+        "ID": 1
+      }
+    ],
+    "outfit": [],
+    "item": [
+      {
+        "ID": 5
+      },
+      {
+        "ID": 2
+      },
+      {
+        "ID": 121,
+        "N": 2
+      },
+      {
+        "ID": 122
+      },
+      {
+        "ID": 139
+      },
+      {
+        "ID": 137
+      }
+    ],
+    "fossil": [],
+    "key": [
+      {
+        "ID": 13
+      }
+    ],
+    "relic": [],
+    "currency": [
+      {
+        "ID": 13,
+        "N": 160
+      },
+      {
+        "ID": 3,
+        "N": 6
+      },
+      {
+        "ID": 15,
+        "N": 11
+      }
+    ],
+    "follow": [
+      {
+        "ID": 125
+      },
+      {
+        "ID": 126
+      },
+      {
+        "ID": 127
+      },
+      {
+        "ID": 128
+      },
+      {
+        "ID": 129
+      },
+      {
+        "ID": 134
+      },
+      {
+        "ID": 135
+      },
+      {
+        "ID": 136
+      },
+      {
+        "ID": 137
+      }
+    ],
+    "mount": [
+      {
+        "ID": 1
+      }
+    ],
+    "spellRelic": []
+  },
+  "data": {
+    "team": 0,
+    "settings": {
+      "bgmVolume": 0.3,
+      "sfxVolume": 0.9,
+      "voiceVolume": 1
+    },
+    "school": "none",
+    "startDate": 1733262893832,
+    "zone": "crystal_caverns-1",
+    "hp": 1481,
+    "energy": 4,
+    "storedMemberStars": 0,
+    "memberStarsExpirationDate": 1733731199000,
+    "stars": 330,
+    "level": 14,
+    "gold": 4070,
+    "battleCounter": 25,
+    "spellbook": [31, 32, 33],
+    "membershipVideoTimeStamp": 1733334473210,
+    "tower": 6,
+    "allowsHouseVisitors": true
+  },
+  "equipment": {
+    "follow": 128,
+    "hat": null,
+    "outfit": null,
+    "weapon": 1,
+    "spellRelic": null,
+    "boots": null,
+    "mount": 1
+  },
+  "house": {
+    "bg": {
+      "active": 1,
+      "own": [1]
+    },
+    "items": {
+      "1": {
+        "N": 1,
+        "A": []
+      },
+      "3": {
+        "N": 1,
+        "A": []
+      },
+      "13": {
+        "N": 1,
+        "A": []
+      },
+      "14": {
+        "N": 1,
+        "A": []
+      },
+      "17": {
+        "N": 1,
+        "A": []
+      },
+      "18": {
+        "N": 2,
+        "A": []
+      }
+    },
+    "currentHouseTag": "suburbs",
+    "active": [
+      {
+        "ID": 17,
+        "x": 480,
+        "y": 160,
+        "dx": 0,
+        "dy": 0,
+        "z": 1,
+        "anchorY": 0,
+        "r": 0,
+        "stack": []
+      },
+      {
+        "ID": 3,
+        "x": 400,
+        "y": 160,
+        "dx": 0,
+        "dy": 0,
+        "z": 1,
+        "anchorY": 0,
+        "r": 0,
+        "stack": []
+      },
+      {
+        "ID": 18,
+        "x": 440,
+        "y": 100,
+        "dx": 0,
+        "dy": 0,
+        "z": 1,
+        "anchorY": 0,
+        "r": 0,
+        "stack": []
+      },
+      {
+        "ID": 18,
+        "x": 840,
+        "y": 100,
+        "dx": 0,
+        "dy": 0,
+        "z": 1,
+        "anchorY": 0,
+        "r": 0,
+        "stack": []
+      },
+      {
+        "ID": 14,
+        "x": 880,
+        "y": 240,
+        "dx": 0,
+        "dy": 0,
+        "z": 1,
+        "anchorY": 0,
+        "r": 0,
+        "stack": []
+      },
+      {
+        "ID": 1,
+        "x": 880,
+        "y": 140,
+        "dx": 0,
+        "dy": 0,
+        "z": 1,
+        "anchorY": 0,
+        "r": 0,
+        "stack": []
+      },
+      {
+        "ID": 13,
+        "x": 640,
+        "y": 80,
+        "dx": 0,
+        "dy": 0,
+        "z": 1,
+        "anchorY": 0,
+        "r": 0,
+        "stack": []
+      }
+    ]
+  },
+  "kennel": [
+    {
+      "ID": 145,
+      "stars": 30,
+      "level": 3,
+      "levelCaught": 1,
+      "nickname": null,
+      "catchDate": 1733263085646,
+      "foreignSpells": [61, 58]
+    },
+    {
+      "ID": 125,
+      "stars": 547,
+      "level": 20,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296367,
+      "foreignSpells": [55, 64]
+    },
+    {
+      "ID": 126,
+      "stars": 532,
+      "level": 20,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296368,
+      "foreignSpells": [81, 58]
+    },
+    {
+      "ID": 127,
+      "stars": 532,
+      "level": 20,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296368,
+      "foreignSpells": [75, 84]
+    },
+    {
+      "ID": 128,
+      "stars": 532,
+      "level": 20,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296368,
+      "foreignSpells": [61, 67]
+    },
+    {
+      "ID": 129,
+      "stars": 532,
+      "level": 20,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296368,
+      "foreignSpells": [75, 64]
+    },
+    {
+      "ID": 130,
+      "stars": 883,
+      "level": 27,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296368,
+      "foreignSpells": [81, 84],
+      "team": 2
+    },
+    {
+      "ID": 131,
+      "stars": 532,
+      "level": 20,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296368,
+      "foreignSpells": [70, 64]
+    },
+    {
+      "ID": 132,
+      "stars": 532,
+      "level": 20,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296368,
+      "foreignSpells": [61, 70]
+    },
+    {
+      "ID": 133,
+      "stars": 787,
+      "level": 25,
+      "levelCaught": 20,
+      "nickname": null,
+      "catchDate": 1733263296368,
+      "foreignSpells": [81, 58],
+      "team": 1
+    },
+    {
+      "ID": 81,
+      "stars": 51,
+      "level": 4,
+      "levelCaught": 4,
+      "nickname": null,
+      "catchDate": 1733334625836,
+      "foreignSpells": [55, 61]
+    },
+    {
+      "ID": 52,
+      "stars": 119,
+      "level": 7,
+      "levelCaught": 7,
+      "nickname": null,
+      "catchDate": 1733337494059,
+      "foreignSpells": [55, 58]
+    }
+  ],
+  "encounter": {
+    "pets": [
+      {
+        "ID": 59,
+        "firstSeenDate": 1733262906983,
+        "timesBattled": 2,
+        "timesRescued": 0
+      },
+      {
+        "ID": 136,
+        "firstSeenDate": 1733263020301,
+        "timesBattled": 0,
+        "timesRescued": 0
+      },
+      {
+        "ID": 139,
+        "firstSeenDate": 1733263020302,
+        "timesBattled": 0,
+        "timesRescued": 0
+      },
+      {
+        "ID": 142,
+        "firstSeenDate": 1733263020303,
+        "timesBattled": 0,
+        "timesRescued": 0
+      },
+      {
+        "ID": 145,
+        "firstSeenDate": 1733263020304,
+        "timesBattled": 1,
+        "timesRescued": 1
+      },
+      {
+        "ID": 148,
+        "firstSeenDate": 1733263020305,
+        "timesBattled": 0,
+        "timesRescued": 0
+      },
+      {
+        "ID": 69,
+        "firstSeenDate": 1733263150035,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 122,
+        "firstSeenDate": 1733263150037,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 125,
+        "firstSeenDate": 1733263296367,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 126,
+        "firstSeenDate": 1733263296368,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 127,
+        "firstSeenDate": 1733263296368,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 128,
+        "firstSeenDate": 1733263296368,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 129,
+        "firstSeenDate": 1733263296368,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 130,
+        "firstSeenDate": 1733263296368,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 131,
+        "firstSeenDate": 1733263296368,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 132,
+        "firstSeenDate": 1733263296368,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 133,
+        "firstSeenDate": 1733263296368,
+        "timesBattled": 0,
+        "timesRescued": 1
+      },
+      {
+        "ID": 81,
+        "firstSeenDate": 1733334472177,
+        "timesBattled": 3,
+        "timesRescued": 1
+      },
+      {
+        "ID": 52,
+        "firstSeenDate": 1733335107446,
+        "timesBattled": 3,
+        "timesRescued": 1
+      },
+      {
+        "ID": 51,
+        "firstSeenDate": 1733337571026,
+        "timesBattled": 2,
+        "timesRescued": 0
+      },
+      {
+        "ID": 82,
+        "firstSeenDate": 1733337636820,
+        "timesBattled": 2,
+        "timesRescued": 0
+      },
+      {
+        "ID": 116,
+        "firstSeenDate": 1733337716006,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 17,
+        "firstSeenDate": 1733337787410,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 14,
+        "firstSeenDate": 1733337871163,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 99,
+        "firstSeenDate": 1733338111535,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 13,
+        "firstSeenDate": 1733338202845,
+        "timesBattled": 0,
+        "timesRescued": 0
+      },
+      {
+        "ID": 102,
+        "firstSeenDate": 1733338224033,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 100,
+        "firstSeenDate": 1733338292743,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 103,
+        "firstSeenDate": 1733338361591,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 101,
+        "firstSeenDate": 1733338423324,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 104,
+        "firstSeenDate": 1733338423325,
+        "timesBattled": 1,
+        "timesRescued": 0
+      },
+      {
+        "ID": 31,
+        "firstSeenDate": 1733338515836,
+        "timesBattled": 1,
+        "timesRescued": 0
+      }
+    ],
+    "ads": []
+  },
+  "justLeveled": false,
+  "quests": {
+
+  },
+  "spellStreak": 34,
+  "state": {
+    "tutorial": {
+      "0": 4
+    },
+    "world": {
+      "dailyQuests": {
+        "0": {
+          "questId": 0,
+          "dateId": 20061,
+          "questState": 0
+        }
+      },
+      "bounties": [40885218.0285408, 39470507.2043896, 103297205.439781]
+    },
+    "zone": {
+      "house": {
+        "0": {
+          "date": "12042024",
+          "flags": [1, 1, 1, 1, 1],
+          "rewards": 0
+        },
+        "6": 1733338601799,
+        "quest": {
+          "ID": 2
+        }
+      },
+      "lamplight": {
+        "2": "12042024"
+      },
+      "academy": {
+        "0": {
+          "date": "12032024",
+          "flags": [1, 1, 1, 1, 1],
+          "rewards": 0
+        },
+        "quest": {
+          "ID": 2
+        }
+      },
+      "forest": {
+        "0": 1,
+        "3": 1,
+        "4": 1,
+        "8": {
+          "date": "12042024",
+          "flags": [1, 1, 1, 1, 1],
+          "rewards": 0
+        },
+        "quest": {
+          "ID": 4,
+          "req": {
+            "type": "item",
+            "ID": 66,
+            "N": 3
+          },
+          "state": {
+
+          },
+          "seq": 0
+        }
+      },
+      "toyzone": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": true
+      }
+    },
+    "breadcrumbs": {
+      "FEATURE_BATTLE_TUTORIAL": 7659,
+      "FEATURE_ACADEMY_TOWERS": 3,
+      "FEATURE_CLOUD_MOUNT": 1,
+      "FEATURE_HOUSE_VISITING": 7,
+      "FEATURE_HOUSE_MOVING": 7,
+      "BREADCRUMB_TITAN_UNLOCKED_HUD_BUTTON": 2,
+      "FEATURE_BADGES": 3,
+      "FEATURE_STYLIST": 1,
+      "BREADCRUMB_FEATURE_DUNGEONS": 1
+    },
+    "dungeons": {
+      "crystal_caverns": {
+        "persistentData": {
+          "bossesStatus": 0
+        },
+        "runData": {
+          "bossesStatus": 0,
+          "currentMap": "crystal_caverns-1",
+          "level": 14,
+          "seed": 1733338669183
+        },
+        "phaseData": {
+          "mapObjectStatus": {
+            "0": 67166225
+          },
+          "checkpoint": {
+            "index": 1,
+            "location": {
+              "x": 3019,
+              "y": 5600
+            },
+            "facingDirection": -1
+          }
+        }
+      }
+    },
+    "towers": {
+      "earthtower": {
+        "achievementPagesCount": 0,
+        "achievementMonstersCount": 0
+      }
+    }
+  },
+  "tutorial": {
+    "zones": {
+
+    },
+    "menus": {
+      "14": [1]
+    }
+  },
+  "gameVersion": "3-18-5"
+}
